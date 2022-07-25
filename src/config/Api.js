@@ -1,15 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const API = axios.create({
-  baseURL:
-    "https://dumbmerch-app-backend.herokuapp.com/api/v1" ||
-    "http://localhost:5000/api/v1/",
+  baseURL: process.env.SERVER_URL || 'https://dumbmerch-project.herokuapp.com/api/v1' || 'http://localhost:5000/api/v1/',
 });
 
 export const setAuthToken = (token) => {
   if (token) {
-    API.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   } else {
-    delete API.defaults.headers.common["Authorization"];
+    delete API.defaults.headers.common['Authorization'];
   }
 };
